@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Reports</h2>
+    <p id="reports"></p>
+
+    <script>
+      let reports = {};
+      const websocket = new WebSocket("ws://localhost:8080/reports");
+
+      websocket.onopen = function(event) {
+        console.log("Successfully conencted to reports endpoint");
+      };
+
+      websocket.onerror = function(error) {
+        console.log(error);
+      };
+
+      websocket.onmessage = function(event) {
+        reports = JSON.parse(event.data);
+        console.log(reports);
+
+        document.getElementById("reports").innerText = JSON.stringify(reports);
+      };
+    </script>
+  </body>
+</html>

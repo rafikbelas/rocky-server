@@ -1,4 +1,47 @@
 {
-    "name": "ideo",
-    "status": true
+  "services": [
+    {
+      "name": "worker",
+      "subs": [
+        {
+          "name": "rabbitmq",
+          "status": true
+        },
+        {
+          "name": "mongodb",
+          "status": true
+        },
+        {
+          "name": "datatracking",
+          "status": true
+        }
+      ]
+    },
+    {
+      "name": "webserver",
+      "subs": [
+        {
+          "name": "php7",
+          "status": true
+        },
+        {
+          "name": "nginx",
+          "status": true
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "subs": [
+        {
+          "name": "nginx",
+          "status": true
+        },
+        {
+          "name": "supervisor",
+          "status": true
+        }
+      ]
+    }
+  ]
 }
